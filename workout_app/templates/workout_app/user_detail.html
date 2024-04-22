@@ -1,0 +1,24 @@
+{% extends 'workout_app/base_template.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>User Detail</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                    
+                        <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+                        <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                        <li class="list-group-item"><strong>First Name:</strong> {{ user.first_name }}</li>
+                        <li class="list-group-item"><strong>Last Name:</strong> {{ user.last_name }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

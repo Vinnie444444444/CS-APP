@@ -1,0 +1,28 @@
+{% extends 'workout_app/base_template.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h2>User List</h2>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        {% for rat in users %}
+                            <li>
+                                {{ rat.name }}
+                                
+                                <a href="{% url 'workout_detail' rat_id=rat.id %}" class="btn btn-primary">View Workouts</a>
+
+
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

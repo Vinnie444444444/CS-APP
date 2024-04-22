@@ -1,0 +1,64 @@
+{% extends 'workout_app/base_template.html' %}
+
+{% block content %}
+    <style>
+        .exercises-header {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .exercise-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .exercise-table th,
+        .exercise-table td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        .exercise-actions {
+            text-align: center;
+        }
+        .exercise-actions a {
+            margin-right: 5px;
+        }
+        .add-exercise-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+        }
+    </style>
+    <h1 class="exercises-header">Exercises</h1>
+    {% if exercises %}
+        <table class="exercise-table">
+            <tr>
+                <th>Name</th>
+                <th>Sets</th>
+                <th>Reps</th>
+                <th>Weight</th>
+                <th>Actions</th>
+            </tr>
+            {% for exercise in exercises %}
+                <tr>
+                    <td>{{ exercise.name }}</td>
+                    <td>{{ exercise.sets }}</td>
+                    <td>{{ exercise.reps }}</td>
+                    <td>{{ exercise.weight }}</td>
+                    <td class="exercise-actions">
+                        <a href="{% url 'update_exercise' exercise.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete_exercise' exercise.id %}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No exercises found.</p>
+    {% endif %}
+    {% if workout_id %}
+        <a href="{% url 'create_exercise' workout_id=workout_id %}" class="btn btn-primary">Add Exercise</a>
+    {% else %}
+        <p>No workout selected.</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Workout</title>
+</head>
+<body>
+    <h1>Delete Workout</h1>
+    <p>Are you sure you want to delete the workout "{{ workout.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    {% if workout_id %}
+        <a href="{% url 'view_exercises' workout_id=workout_id %}" class="btn btn-secondary">Cancel</a>
+    {% else %}
+        <a href="{% url 'workout_detail' workout_id=workout_id %}" class="btn btn-secondary">Cancel</a>
+    {% endif %}
+</body>
+</html>

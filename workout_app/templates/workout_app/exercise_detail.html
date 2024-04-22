@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Detail</title>
+</head>
+<body>
+    <h1>{{ exercise.name }}</h1>
+    <p><strong>Description:</strong> {{ exercise.description }}</p>
+    <p><strong>Muscle Group:</strong> {{ exercise.muscle_group }}</p>
+    <p><strong>Difficulty:</strong> {{ exercise.difficulty }}</p>
+    <a href="{% url 'update_exercise' exercise.id %}">Update</a>
+    <form action="{% url 'delete_exercise' exercise.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    <a href="{% url 'view_exercises' %}">Back to Exercises</a>
+</body>
+</html>
